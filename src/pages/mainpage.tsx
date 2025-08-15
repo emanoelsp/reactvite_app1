@@ -1,7 +1,7 @@
 export default function MainPage() {
 
     return (
-        <main className='flex flex-col items-center p-8 bg-red-300 min-h-screen'>
+        <div className='flex flex-col items-center p-8 bg-red-300 min-h-screen'>
             <h1 className="font-bold text-shadow-lg text-3xl">
                 Bem-vindo REACT+VITE+TAILWINDCSS
             </h1>
@@ -15,6 +15,6 @@ export default function MainPage() {
             <label className="border-2 rounded-lg px-3 mt-2 bg-red-500 text-white">
                 Clique aqui
             </label>
-        </main>
+        </div>
     )
 }
