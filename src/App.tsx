@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main>
+      <main className="bg-gradient-to-r from-red-50 via-red-300 to-red-700 ">
         <Routes>
             <Route path="/" element={<MainPage />}>  </Route>
             <Route path="/contatos" element={<ContactPage />}> </Route>
@@ -22,3 +22,6 @@ function App() {
 }
 
 export default App
+
+
+
