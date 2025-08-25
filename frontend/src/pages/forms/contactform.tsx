@@ -3,7 +3,7 @@ import { ContactSchema } from "../schemas/contactchema";
 import type { formData } from "../types/formdatatype";
 import { IMaskInput } from "react-imask";
 import { useForm, Controller } from "react-hook-form";
-import onSubmit from "../../controller/messagecontroller";
+import { onSubmit } from "../../controller/messagecontroller";
 
 export default function ContactForm() {
   const {

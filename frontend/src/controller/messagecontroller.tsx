@@ -16,4 +16,16 @@ const onSubmit = async (data: formData) => {
   }
 };
 
-export default onSubmit;
+export { onSubmit };
+
+const readMessage = async () => {
+  try {
+    const rs = await axios.get("http://localhost:3001/mensagens");
+    return rs.data;
+  } catch (error) {
+    console.error("Erro ao ler as mensagens:", error);
+    return [];
+  }
+}
+
+export { readMessage };

@@ -16,8 +16,10 @@ export default function Nav() {
         <li className="hover:bg-gray-500"> Sobre </li>
         <li className="hover:bg-gray-500"> Serviços </li>
         <li className="hover:bg-gray-500">
-          {" "}
-          <Link to="/contatos"> Contatos </Link>{" "}
+          <Link to="/contatos"> Contatos </Link>
+        </li>
+        <li className="hover:bg-gray-500">
+          <Link to="/mensagens"> Mensagens </Link>
         </li>
       </ul>
       {/* menu celular */}
@@ -34,8 +36,8 @@ export default function Nav() {
             <li className="p-1 hover:bg-gray-500  hover:text-red-300"> <Link to="/"> Início </Link> </li>
             <li className="p-1 hover:bg-gray-500  hover:text-red-300"> Sobre </li>
             <li className="p-1 hover:bg-gray-500  hover:text-red-300"> Serviços </li>
-            <li className="p-1 hover:bg-gray-500  hover:text-red-300"> <Link to="/contatos"> Contatos </Link>
-            </li>
+            <li className="p-1 hover:bg-gray-500  hover:text-red-300"> <Link to="/contatos"> Contatos </Link> </li>
+            <li className="p-1 hover:bg-gray-500  hover:text-red-300"> <Link to="/mensagens"> Mensagens </Link> </li>
           </ul>
         )}
       </div>

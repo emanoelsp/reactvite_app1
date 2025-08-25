@@ -36,6 +36,11 @@ app.post('/mensagens', (req, res) => {
     res.status(201).json(novaMensagem)
 })
 
+app.get('/mensagens', (req, res) => {
+    const mensagens = readMessage()
+    res.json(mensagens)
+})
+
 
 
 
