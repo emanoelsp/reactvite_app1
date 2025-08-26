@@ -41,12 +41,34 @@ app.get('/mensagens', (req, res) => {
     res.json(mensagens)
 })
 
+app.delete('/mensagens/:id', (req, res) => {
+    let mensagens = readMessage()
+    const id = parseInt(req.params.id)
+    const novasMensagens = mensagens.filter((msg) => msg.id !== id)
+    writeMessage(novasMensagens)
+    res.status(204).end()
+})
 
+app.get('/mensagens/:id', (req, res) => {
+    const mensagens = readMessage()
+    const id = parseInt(req.params.id)
+    const mensagem = mensagens.find((msg) => msg.id === id)
+    if (mensagem) {
+        res.json(mensagem)
+    } else {
+        res.status(404).json({ error: "Mensagem não encontrada" })
+    }
+})
 
-
-
-
-
-
-
-
+app.put('/mensagens/:id', (req, res) => {
+    let mensagens = readMessage()
+    const id = parseInt(req.params.id)
+    const index = mensagens.findIndex((msg) => msg.id === id)
+    if (index !== -1) {
+        mensagens[index] = { id, ...req.body }
+        writeMessage(mensagens)
+        res.json(mensagens[index])
+    } else {
+        res.status(404).json({ error: "Mensagem não encontrada" })
+    }
+})

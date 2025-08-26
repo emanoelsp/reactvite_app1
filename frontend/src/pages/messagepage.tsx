@@ -1,10 +1,12 @@
-import { readMessage } from "../controller/messagecontroller";
+import { readMessage, onDelete } from "../controller/messagecontroller";
 import type { messageDataType } from "./types/messagedatatype";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MessagePage() {
   const [messages, setMessages] = useState<messageDataType[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMessages();
@@ -22,6 +24,17 @@ export default function MessagePage() {
         setError("Erro ao ler as mensagens");
       });
   }
+
+    function handleDelete(id: number) {
+        onDelete(id).then(() => {
+        fetchMessages();
+        });
+    }
+
+    function handleEdit(id: number, msg: messageDataType) {
+        navigate(`/mensagens/${id}`, { state: { msg } });
+    }
+
   return (
     <div className="flex flex-col justify-center items-center p-8 min-h-screen">
       <div className="bg-white shadow-xl rounded-2xl p-10 max-w-2xl text-center">
@@ -32,7 +45,17 @@ export default function MessagePage() {
                 <p><strong>Email:</strong> {msg.email}</p>
                 <p><strong>Telefone:</strong> {msg.telefone}</p>
                 <p><strong>CEP:</strong> {msg.cep}</p>
-                <p><strong>Bairro:</strong> {msg.bairro}</p>    
+                <p><strong>Bairro:</strong> {msg.bairro}</p>   
+                <button onClick={() => {handleDelete(msg.id)}}
+                    className="mt-2 bg-red-500 text-white px-4 py-2 rounded 
+                    hover:bg-red-600 hover:shadow-xl">
+                    Excluir        
+                </button> 
+                 <button onClick={() => {handleEdit(msg.id, msg)}}
+                    className="mt-2 ml-2 bg-purple-500 text-white px-4 py-2 rounded 
+                    hover:bg-purple-600 hover:shadow-xl">
+                    Editar        
+                </button> 
             </div>
         ))}
         {error && <p className="text-red-600">{error}</p>}
